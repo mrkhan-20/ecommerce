@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/home.css">
+    <!-- Bootstrap CSS -->
+  </head>
+  <body>
+      <nav >
+        <%- include("./partials/header",{user:user}) %>
+      </nav>
+
+
+      <div class="p-item" id="p-item">
+        <div class="d-flex justify-content-between">
+          <h3>Product List</h3>
+          <a href="/mycart" class="btn btn-primary" id="mycart">My Cart</a>
+        </div>
+        <% if (newpro.length>10) { %>
+          <% for( let i = 5; i < 10; i++ ) { %>
+            <div class="d-flex align-items-center items" id="<%= newpro[i].file %>">
+                <div class="d-flex align-items-center" style="width: 50%;">
+                    <img src="<%= newpro[i].file %>" alt="" width="20%" height="40%">
+                    <div>
+                      <h4><%= newpro[i].name%></h4>
+                      <h5>Price: <%= newpro[i].price%></h5>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-around; width: 40%;" id="myPopup">
+                    <div class="popup" >Details
+                        <span class="popuptext" ><%= newpro[i].description%></span>
+                      </div>
+                      <% if (cartitems) { %>
+                          <% if (cartitems.get(newpro[i].file)){ %>
+                            <button class="btn btn-success cart" id="<%=newpro[i].file %>c" style="display: none;">Add to cart</button>
+                            <button class="btn btn-secondary removecart" id="<%=newpro[i].file%>rc" >Remove from cart</button>
+                      
+                      <% } else { %>
+                        <button class="btn btn-success cart" id="<%= newpro[i].file %>c" >Add to cart</button>
+                        <button class="btn btn-secondary removecart" id="<%= newpro[i].file %>rc" style="display: none;" >Remove from cart</button>
+                    <% } %>
+                    
+                    <%} else { %>
+                      <button class="btn btn-success cart" id="<%= newpro[i].file %>c" >Add to cart</button>
+                      <button class="btn btn-secondary removecart" id="<%= newpro[i].file %>rc" style="display: none;" >Remove from cart</button>
+                  <% } %>
+                </div>
+            </div>
+        <% } %>
+        <% } else { %>
+          <% for( let i = 0; i < newpro.length; i++ ) { %>
+              <div class="d-flex align-items-center items" id="<%= newpro[i].file %>">
+                  <div class="d-flex align-items-center" style="width: 50%;">
+                      <img src="<%= newpro[i].file %>" alt="" width="20%" height="40%">
+                      <div>
+                        <h4><%= newpro[i].name%></h4>
+                        <h5>Price: <%= newpro[i].price%></h5>
+                      </div>
+                  </div>
+                  <div style="display: flex; justify-content: space-around; width: 40%;" id="myPopup">
+                      <div class="popup" >Details
+                          <span class="popuptext" ><%= newpro[i].description%></span>
+                        </div>
+                        <% if (cartitems) { %>
+                            <% if (cartitems.get(newpro[i].file)){ %>
+                              <button class="btn btn-success cart" id="<%=newpro[i].file %>c" style="display: none;">Add to cart</button>
+                              <button class="btn btn-secondary removecart" id="<%=newpro[i].file%>rc" >Remove from cart</button>
+                        
+                        <% } else { %>
+                          <button class="btn btn-success cart" id="<%= newpro[i].file %>c" >Add to cart</button>
+                          <button class="btn btn-secondary removecart" id="<%= newpro[i].file %>rc" style="display: none;" >Remove from cart</button>
+                      <% } %>
+                      
+                      <%} else { %>
+                        <button class="btn btn-success cart" id="<%= newpro[i].file %>c" >Add to cart</button>
+                        <button class="btn btn-secondary removecart" id="<%= newpro[i].file %>rc" style="display: none;" >Remove from cart</button>
+                    <% } %>
+                  </div>
+              </div>
+          <% } %>
+        <% } %>
+        
+      </div>
+      <div id="n" class="d-flex justify-content-around align-items-center" width="100%" style="background-color: black;">
+        <a href="/home" style="color:rgb(226, 91, 91); " >
+          << Previous products
+        </a> 
+        <a href="/next2" style="color:rgb(226, 91, 91); " >
+          Next products>>
+        </a> 
+       </div>
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/js/home.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

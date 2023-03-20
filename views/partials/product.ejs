@@ -1,0 +1,31 @@
+<% for( let i = 0; i < 5; i++ ) { %>
+    <div class="d-flex align-items-center items" id="<%= product[i].file %>">
+        <div class="d-flex align-items-center" style="width: 50%;">
+            <img src="<%= product[i].file %>" alt="" width="20%" height="40%">
+             <div>
+                <h4><%= product[i].name%></h4>
+                <h5>Price: <%= product[i].price%></h5>
+             </div>
+             
+        </div>
+        <div style="display: flex; justify-content: space-around; width: 40%;" id="myPopup">
+            <div class="popup" >Details
+                <span class="popuptext" ><%= product[i].description%></span>
+            </div>
+            <% if (cartitems) { %>
+                <% if (cartitems.get(product[i].file)){ %>
+                    <button class="btn btn-success cart" id="<%= product[i].file %>c" style="display: none;">Add to cart</button>
+                    <button class="btn btn-secondary removecart" id="<%= product[i].file %>rc" >Remove from cart</button>    
+                
+            <% } else { %>
+                    <button class="btn btn-success cart" id="<%= product[i].file %>c" >Add to cart</button>
+                    <button class="btn btn-secondary removecart" id="<%= product[i].file %>rc" style="display: none;" >Remove from cart</button>
+             <% } %>
+             
+             <% }else { %>
+                <button class="btn btn-success cart" id="<%= product[i].file %>c" >Add to cart</button>
+                <button class="btn btn-secondary removecart" id="<%= product[i].file %>rc" style="display: none;" >Remove from cart</button>
+         <% } %>
+        </div>
+    </div>
+<% } %>

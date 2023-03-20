@@ -1,0 +1,124 @@
+
+body{
+     font-family: 'Open Sans', sans-serif;
+}
+.head{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:aliceblue;
+    background-color:rgb(39, 94, 212);
+    margin-bottom: 10px;
+}
+
+.new{
+    width: 100%;
+    background-color: black;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(206, 200, 200);
+}
+input{
+    margin: 5px;
+    border-radius: 3px;
+    border: none
+}
+
+input:focus{
+    outline: none;
+}
+.btn{
+    padding: 5px 7px 5px 7px;
+    
+}
+.p-item{
+    padding:3em 10em 3em 10em;
+}
+img{
+    margin: 10px;
+    border-radius: 5px;
+    /* border: 1px solid black; */
+}
+.items{
+    margin-top: 10px;
+    box-shadow: 1px 2px 2px 3px rgb(40, 40, 49);
+    background-color: rgb(43, 37, 37);
+    color: white;
+    padding: 15px 10px 15px 10px;
+    border-radius: 10px;
+}
+a{
+    color: white;
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+.description{
+    padding: 10px 15px 10px 15px;
+}
+
+
+
+
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  /* The actual popup */
+  .popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+  }
+  
+  /* Popup arrow */
+ .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+    visibility: visible;
+    animation: fadeIn 1s;
+  }
+  
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+  .plus,.minus{
+    height: 80%;
+    padding: 2px 6px 4px 6px;
+  }
+  .btn:hover{
+    cursor: pointer;
+  }
+
+  #next,#prev:hover{
+    cursor: pointer;
+  }
