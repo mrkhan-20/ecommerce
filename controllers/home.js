@@ -1,5 +1,5 @@
-const Cart=require("../services/servicesMongo/getCart");
-const Products=require("../services/servicesMongo/Getproduct");
+const Cart=require("../services/servicesSql/getCart");
+const Products=require("../services/servicesSql/Getproduct");
 
 let product=[],newpro=[],cartitems={};
 
@@ -12,9 +12,9 @@ Products(null,(err,data)=>{
 
 module.exports=(req,res)=>{
     Cart(null,req.session.user.username,(err,data)=>{
+        // console.log(data);
         if(data.length>0){
-            cartitems=data[0].product;
-            res.render("home",{user:req.session.user,error:"",product:product,cartitems:cartitems});
+            res.render("home",{user:req.session.user,error:"",product:product,cartitems:data});
             return;
         }
         else{

@@ -31,6 +31,7 @@
           <input type="text" name="name" placeholder="Name" >
           <input type="text" name="description"  placeholder="Description">
           <input type="text" name="price"  placeholder="Price">
+          <input type="text" name="seller"  placeholder="Seller">
           <input type="file" name="product-pic" >
           <input type="submit" value="Submit" class="btn btn-primary">
         </form>
@@ -67,7 +68,10 @@
               </div>
           </div>
            <div style="display: flex; justify-content: space-around; width: 40%;" id="myPopup">
-                 <input type="text" id="desc">
+            <div class="d-flex align-items-center">
+              <input type="text" id="desc">
+              <input type="text" id="seller" >
+            </div>
                 <a class="btn btn-secondary delete" id="">Delete</a>
                 <a class="btn btn-secondary update" id="">Update</a>
             </div>

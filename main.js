@@ -1,11 +1,11 @@
 const express=require("express");
 const session = require("express-session");
-const Products=require("./services/servicesMongo/Getproduct");
-const updateProduct=require("./services/servicesMongo/updateProduct");
-const deleteProduct=require("./services/servicesMongo/deleteProduct");
+const Products=require("./services/servicesSql/Getproduct");
+const updateProduct=require("./services/servicesSql/updateProduct");
+const deleteProduct=require("./services/servicesSql/deleteProduct");
 const Cart=require("./services/servicesMongo/getCart");
-const forgotPass=require("./services/servicesMongo/forgotPass");
-const tokenVerify=require("./services/servicesMongo/tokenVerify");
+const forgotPass=require("./services/servicesSql/forgotPass");
+const tokenVerify=require("./services/servicesSql/tokenVerify");
 const getSeller=require("./services/servicesMongo/getSeller");
 
 ////Routes
@@ -67,7 +67,7 @@ app.use("/signup",signup);
 app.get("/verifyMail/:token", function(req, res){
     const {token}=req.params;
    
-    tokenVerify(token,null);
+    tokenVerify(token,null,()=>{});
     tokenVerify(token,1,(err,re)=>{
         req.session.user=re[0];
         req.session.islog=true;

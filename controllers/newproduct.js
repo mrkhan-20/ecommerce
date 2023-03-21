@@ -1,4 +1,4 @@
-const Products=require("../services/servicesMongo/Getproduct");
+const Products=require("../services/servicesSql/Getproduct");
 
 let product=[],newpro=[],cartitems={};
 
@@ -10,7 +10,7 @@ Products(null,(err,data)=>{
 })
 
 const get=(req,res)=>{
-    if(req.session.islog && req.session.user.isVarified){
+    if(req.session.islog && req.session.user.varified){
         res.redirect("/admin")
         return;
      }
@@ -26,7 +26,8 @@ const post=(req,res)=>{
         "name": req.body.name,
         "description": req.body.description,
         "price":req.body.price,
-        "file":req.file.filename
+        "file":req.file.filename,
+        "seller":req.body.seller
     }
     if(req.file.size>250000){
         res.render("admin",{user:req.session.user,error:"Image should be less than 250kb",product:product,cartitems:cartitems});

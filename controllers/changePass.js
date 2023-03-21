@@ -1,7 +1,7 @@
-const updateUser=require("../services/servicesMongo/updateUser");
+const updateUser=require("../services/servicesSql/updateUser");
 
 const getChangePass=(req,res)=>{
-    if(req.session.islog && req.session.user.isVarified){
+    if(req.session.islog && req.session.user.varified){
         res.render("changePass",{error:"",success:""});
        
         return;

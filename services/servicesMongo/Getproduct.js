@@ -1,6 +1,5 @@
 const Product=require("./productdbConnect");
     
-
 const Getproduct=async (product,callback)=>{
         try{
             

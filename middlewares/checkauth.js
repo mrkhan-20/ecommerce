@@ -3,10 +3,10 @@ function checkauth(req,res,next){
         res.redirect("/admin");
         return;
     }
-    if(req.session.islog && req.session.user.isVarified){
+    if(req.session.islog && req.session.user.varified){
         next();
         return;
-    }else if(req.session.islog && !req.session.user.isVarified){
+    }else if(req.session.islog && !req.session.user.varified){
         res.render("notVarified");
         return;
     }

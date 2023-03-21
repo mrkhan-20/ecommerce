@@ -1,20 +1,8 @@
-const Cart=require("../services/servicesMongo/getCart");
-const updateCart=require("../services/servicesMongo/updateCart");
+const Carts=require("../services/servicesSql/sqlConnection");
 
-module.exports=(req,res)=>{
+module.exports=async (req,res)=>{
     let id=req.body.id;
-    Cart(null,req.session.user.username,(err,data)=>{
-        let username=req.session.user.username;
-        if(data.length>0){
-            data=data[0];
-            if(data.product){
-                data.product.set(id,undefined)
-            }
-        }
-    
-        updateCart(data.product,username,(err,data)=>{
-            res.redirect("/home");
-        })
-            
-    })
+    let username=req.session.user.username;
+    await Carts.getClient().query(`delete from Cart where username='${username}' and product_id='${id}'`);
+    res.redirect("/home")
 }

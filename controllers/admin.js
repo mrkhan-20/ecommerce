@@ -1,4 +1,4 @@
-const Products=require("../services/servicesMongo/Getproduct");
+const Products=require("../services/servicesSql/Getproduct");
 
 let product=[],newpro=[],cartitems={};
 
@@ -10,7 +10,8 @@ Products(null,(err,data)=>{
 })
 
 const admin= (req,res)=>{
-    if(req.session.islog && req.session.user.isVarified && req.session.user.username=="admin"){
+    // console.log(req.session.islog , req.session.user.varified, req.session.user.username)
+    if(req.session.islog && req.session.user.varified && req.session.user.username=="admin"){
         Products(null,(err,data)=>{
             if(data.length>0 ){
                 product=data;

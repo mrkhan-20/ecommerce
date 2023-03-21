@@ -23,9 +23,9 @@
         </div>
         <% if (newpro.length>10) { %>
           <% for( let i = 5; i < 10; i++ ) { %>
-            <div class="d-flex align-items-center items" id="<%= newpro[i].file %>">
+            <div class="d-flex align-items-center items" id="<%= newpro[i].product_id %>">
                 <div class="d-flex align-items-center" style="width: 50%;">
-                    <img src="<%= newpro[i].file %>" alt="" width="20%" height="40%">
+                    <img src="<%= newpro[i].product_id %>" alt="" width="20%" height="40%">
                     <div>
                       <h4><%= newpro[i].name%></h4>
                       <h5>Price: <%= newpro[i].price%></h5>
@@ -36,27 +36,33 @@
                         <span class="popuptext" ><%= newpro[i].description%></span>
                       </div>
                       <% if (cartitems) { %>
-                          <% if (cartitems.get(newpro[i].file)){ %>
-                            <button class="btn btn-success cart" id="<%=newpro[i].file %>c" style="display: none;">Add to cart</button>
-                            <button class="btn btn-secondary removecart" id="<%=newpro[i].file%>rc" >Remove from cart</button>
+                        <% var flag=0; %>
+                        <% for( let j = 0; j < cartitems.length; j++ ) { %>
+                            <% if (newpro[i].product_id==cartitems[j].product_id) { %>
+                                <% flag=1; %>
+                            <% } %>
+                        <% } %>
+                          <% if (flag){ %>
+                            <button class="btn btn-success cart" id="<%=newpro[i].product_id %>c" style="display: none;">Add to cart</button>
+                            <button class="btn btn-secondary removecart" id="<%=newpro[i].product_id%>rc" >Remove from cart</button>
                       
                       <% } else { %>
-                        <button class="btn btn-success cart" id="<%= newpro[i].file %>c" >Add to cart</button>
-                        <button class="btn btn-secondary removecart" id="<%= newpro[i].file %>rc" style="display: none;" >Remove from cart</button>
+                        <button class="btn btn-success cart" id="<%= newpro[i].product_id %>c" >Add to cart</button>
+                        <button class="btn btn-secondary removecart" id="<%= newpro[i].product_id %>rc" style="display: none;" >Remove from cart</button>
                     <% } %>
                     
                     <%} else { %>
-                      <button class="btn btn-success cart" id="<%= newpro[i].file %>c" >Add to cart</button>
-                      <button class="btn btn-secondary removecart" id="<%= newpro[i].file %>rc" style="display: none;" >Remove from cart</button>
+                      <button class="btn btn-success cart" id="<%= newpro[i].product_id %>c" >Add to cart</button>
+                      <button class="btn btn-secondary removecart" id="<%= newpro[i].product_id %>rc" style="display: none;" >Remove from cart</button>
                   <% } %>
                 </div>
             </div>
         <% } %>
         <% } else { %>
           <% for( let i = 0; i < newpro.length; i++ ) { %>
-              <div class="d-flex align-items-center items" id="<%= newpro[i].file %>">
+              <div class="d-flex align-items-center items" id="<%= newpro[i].product_id %>">
                   <div class="d-flex align-items-center" style="width: 50%;">
-                      <img src="<%= newpro[i].file %>" alt="" width="20%" height="40%">
+                      <img src="<%= newpro[i].product_id %>" alt="" width="20%" height="40%">
                       <div>
                         <h4><%= newpro[i].name%></h4>
                         <h5>Price: <%= newpro[i].price%></h5>
@@ -67,18 +73,24 @@
                           <span class="popuptext" ><%= newpro[i].description%></span>
                         </div>
                         <% if (cartitems) { %>
-                            <% if (cartitems.get(newpro[i].file)){ %>
-                              <button class="btn btn-success cart" id="<%=newpro[i].file %>c" style="display: none;">Add to cart</button>
-                              <button class="btn btn-secondary removecart" id="<%=newpro[i].file%>rc" >Remove from cart</button>
+                          <% var flag=0; %>
+                        <% for( let j = 0; j < cartitems.length; j++ ) { %>
+                            <% if (newpro[i].product_id==cartitems[j].product_id) { %>
+                                <% flag=1; %>
+                            <% } %>
+                        <% } %>
+                            <% if (flag){ %>
+                              <button class="btn btn-success cart" id="<%=newpro[i].product_id %>c" style="display: none;">Add to cart</button>
+                              <button class="btn btn-secondary removecart" id="<%=newpro[i].product_id%>rc" >Remove from cart</button>
                         
                         <% } else { %>
-                          <button class="btn btn-success cart" id="<%= newpro[i].file %>c" >Add to cart</button>
-                          <button class="btn btn-secondary removecart" id="<%= newpro[i].file %>rc" style="display: none;" >Remove from cart</button>
+                          <button class="btn btn-success cart" id="<%= newpro[i].product_id %>c" >Add to cart</button>
+                          <button class="btn btn-secondary removecart" id="<%= newpro[i].product_id %>rc" style="display: none;" >Remove from cart</button>
                       <% } %>
                       
                       <%} else { %>
-                        <button class="btn btn-success cart" id="<%= newpro[i].file %>c" >Add to cart</button>
-                        <button class="btn btn-secondary removecart" id="<%= newpro[i].file %>rc" style="display: none;" >Remove from cart</button>
+                        <button class="btn btn-success cart" id="<%= newpro[i].product_id %>c" >Add to cart</button>
+                        <button class="btn btn-secondary removecart" id="<%= newpro[i].product_id %>rc" style="display: none;" >Remove from cart</button>
                     <% } %>
                   </div>
               </div>

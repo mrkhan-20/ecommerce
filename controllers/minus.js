@@ -1,19 +1,15 @@
-const Cart=require("../services/servicesMongo/getCart");
-const updateCart=require("../services/servicesMongo/updateCart");
+const Cart=require("../services/servicesSql/getCart");
+const updateCart=require("../services/servicesSql/updateCart");
 
 module.exports=(req,res)=>{
     let id=req.body.id;
     let quantity=req.body.quantity;
-    if(req.session.islog && req.session.user.isVarified){
+    if(req.session.islog && req.session.user.varified){
             Cart(null,req.session.user.username,(err,data)=>{
                 let username=req.session.user.username;
                 if(data.length>0){
-                    data=data[0];
-                    data.product.set(id,{id:id,quantity:quantity})
-                    
-                    updateCart(data.product,username,(err,data)=>{
-                    // console.log(data);
-                    })
+                    let p={"quantity":quantity};
+                    updateCart(p,1,username,id);
             }
         });
     }

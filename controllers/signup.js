@@ -1,8 +1,8 @@
-const SetandGetData =require("../services/servicesMongo/SetandGetData.js");
+const SetandGetData =require("../services/servicesSql/SetandGetData.js");
 const sendMail=require("../services/servicesMongo/sendEmail.js");
 
 const getsign=(req,res)=>{
-    if(req.session.islog && req.session.user.isVarified){
+    if(req.session.islog && req.session.user.varified){
         res.redirect("/home");
         return;
     }
@@ -22,7 +22,6 @@ const postsign=(req,res)=>{
             d=data;
         }
         for(let i=0;i<d.length;i++){
-    
             if(d[i].username==username || d[i].email==email){
                 res.render("signup",{error:"user already registered"});
                 return;

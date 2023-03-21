@@ -1,6 +1,5 @@
-const SetandGetData =require("../services/servicesMongo/SetandGetData.js");
-const Products=require("../services/servicesMongo/Getproduct");
-
+const SetandGetData =require("../services/servicesSql/SetandGetData.js");
+const Products=require("../services/servicesSql/Getproduct");
 let product=[],newpro=[],cartitems={};
 
 Products(null,(err,data)=>{
@@ -15,7 +14,7 @@ const getLogin=(req,res)=>{
         res.redirect("/admin");
         return;
     }
-    else if(req.session.islog && req.session.user.isVarified){
+    else if(req.session.islog && req.session.user.varified){
            res.redirect("/home");
            return;
     }
@@ -31,7 +30,7 @@ const postLogin=(req,res)=>{
     if(username=="admin" && password=="123"){
         req.session.islog=true;
         let temp={name:"Admin",username:"admin",email:"admin@gmail.com",password:"123",
-            "isVarified":true,
+            "varified":true,
             "token":Date.now()
         };
         req.session.user=temp;
@@ -39,6 +38,7 @@ const postLogin=(req,res)=>{
          return; 
     }
     SetandGetData(null,(err, data)=>{
+        // console.log(data)
         if(err){
             res.render("login",{error:"something went wrong"});
             return;
@@ -49,12 +49,7 @@ const postLogin=(req,res)=>{
      
         let flag=0;
         for(let i=0;i<d.length;i++){
-            if(d[i].username==username && d[i].password==password){
-                req.session.islog=true;
-                req.session.user=d[i];
-                flag=1;
-            }
-            if(d[i].username==username && d[i].password==password){
+              if(d[i].username==username && d[i].password==password){
                 req.session.islog=true;
                 req.session.user=d[i];
                 flag=1;
