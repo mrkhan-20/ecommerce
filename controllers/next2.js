@@ -3,14 +3,6 @@ const Products=require("../services/servicesSql/Getproduct");
 
 let product=[],newpro=[],cartitems={};
 
-Products(null,(err,data)=>{
-    if(data.length>0 ){
-        product=data;
-        newpro=data;
-    }
-    product.splice(0,10)
-})
-
 module.exports=(req,res)=>{
     if(req.session.islog){
         Products(null,(err,data)=>{
@@ -19,13 +11,14 @@ module.exports=(req,res)=>{
                 return;
             }
             newpro=data.splice(10)
+            // console.log(newpro)
             Cart(null,req.session.user.username,(err,data)=>{
                 if(data.length>0){
-                    res.render("home2",{user:req.session.user,error:"",newpro:newpro,product:product,cartitems:data});
+                    res.render("home2",{user:req.session.user,error:"",newpro:newpro,cartitems:data});
                     return;
                 }
                 else{
-                    res.render("home2",{user:req.session.user,error:"",newpro:newpro,product:product,cartitems:""});
+                    res.render("home2",{user:req.session.user,error:"",newpro:newpro,cartitems:""});
                     return;
                 }
                 })  

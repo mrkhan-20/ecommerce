@@ -6,17 +6,20 @@ const deleteProduct=require("./services/servicesSql/deleteProduct");
 const Cart=require("./services/servicesMongo/getCart");
 const forgotPass=require("./services/servicesSql/forgotPass");
 const tokenVerify=require("./services/servicesSql/tokenVerify");
-const getSeller=require("./services/servicesMongo/getSeller");
+const getSeller=require("./services/servicesSql/getSeller");
+
 
 ////Routes
 const login=require("./routes/loginRoute");
 const signup=require("./routes/signupRoute");
 const home=require("./routes/homeRoute");
 const admin=require("./routes/adminRoute");
+const seller=require("./routes/seller");
 const adminproduct=require("./routes/adminproductRoute");
 const nextProduct=require("./routes/nextProductRoute");
 const prevProducts=require("./routes/prevProductRoute");
 const newproduct=require("./routes/newproductRoute");
+const sellerNewProduct=require("./routes/sellerNewProduct");
 const changePass=require("./routes/changePassRoute");
 const forgot=require("./routes/forgotRoute");
 const mycart=require("./routes/mycartRoute");
@@ -79,6 +82,12 @@ app.get("/verifyMail/:token", function(req, res){
     });
 
 })
+app.use("/seller",seller);
+app.get("/sellerProducts",(req,res)=>{
+    getSeller(null,req.session.user.username,(err,data)=>{
+        res.json(data);
+    });
+})
 
 app.use("/adminproduct",adminproduct);
 
@@ -96,6 +105,7 @@ app.post("/checkout",(req,res)=>{
 })
 
 app.use("/newproduct",newproduct);
+app.use("/sellerNewProduct",sellerNewProduct);
 
 app.post("/updateProduct",(req,res)=>{
     let product=req.body;

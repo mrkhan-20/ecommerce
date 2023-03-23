@@ -2,12 +2,16 @@ const SetandGetData =require("../services/servicesSql/SetandGetData.js");
 const Products=require("../services/servicesSql/Getproduct");
 let product=[],newpro=[],cartitems={};
 
+const Users=require("../services/servicesSql/sqlConnection");
+
+// Users.connectDb();
+
 Products(null,(err,data)=>{
     if(data.length>0 ){
         product=data;
         newpro=data;
     }
-})
+}) 
 
 const getLogin=(req,res)=>{
     if(req.session.islog && req.session.user.username=="admin"){
@@ -47,12 +51,15 @@ const postLogin=(req,res)=>{
             d=data;
         }
      
-        let flag=0;
+        let flag=0,seller=false;
         for(let i=0;i<d.length;i++){
               if(d[i].username==username && d[i].password==password){
                 req.session.islog=true;
                 req.session.user=d[i];
                 flag=1;
+                if(d[i].isseller==true){
+                    seller=true;
+                }
             }
         }
         
@@ -60,8 +67,15 @@ const postLogin=(req,res)=>{
             res.render("login",{error:"Username or password is wrong"});
         }
         else{
-               res.redirect("/home");
-               return; 
+            if(seller){
+                res.redirect("/seller");
+                return; 
+
+            }else{
+                res.redirect("/home");
+                return; 
+
+            }
         }
         
     })
