@@ -35,7 +35,8 @@ function creatingCard(products) {
     input[0].value=products.name;
     input[1].value=products.price;
     input[2].value=products.description;
-    input[3].value=products.seller;
+    input[4].value=products.seller;
+    input[3].value=products.quantity;
     list.appendChild(clone);
 }
 
@@ -50,7 +51,7 @@ function load(products) {
 
 list.addEventListener("click",(e)=>{
     let target=e.target;
-
+    
     id=target.parentNode.parentNode.id;
 
     if(target.classList.contains("delete")){
@@ -62,13 +63,12 @@ list.addEventListener("click",(e)=>{
         let name=(parent.childNodes[3].firstElementChild.value);
         let price=(parent.childNodes[3].lastElementChild.value);
         let desc=target.parentNode.firstElementChild.childNodes[1].value;
-        let seller=target.parentNode.firstElementChild.childNodes[3].value;
-        
+        let quantity=target.parentNode.firstElementChild.childNodes[3].value;
+        let seller=target.parentNode.firstElementChild.childNodes[5].value;
         let req = new XMLHttpRequest();
         req.open("POST","updateProduct");
         req.setRequestHeader("Content-Type", "application/json");
-        let p={"name":name,"price":price,"desc":desc,"id":id,"seller":seller};
-        console.log(p);
+        let p={"name":name,"price":price,"desc":desc,"id":id,"seller":seller,"quantity":quantity};
         req.send(JSON.stringify(p));
         req.addEventListener("load",()=>{
             

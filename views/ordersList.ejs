@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/home.css">
+    <!-- Bootstrap CSS -->
+  </head>
+  <body>
+      <nav >
+        <%- include("./partials/header",{user:user}) %>
+      </nav>
+
+      <div class="p-item" id="p-item">
+        <div class="d-flex justify-content-between">
+            <h3>Customer Orders</h3>
+            <a href="/seller" class="btn btn-primary" >Go to home</a>
+          </div>
+          <% if (error) { %>
+            <p style="text-align: center; margin-top: 20px; font-style: italic; font-size: 25px">There is an issue in getting order list.</p>
+          <% } %>
+          <% if (order.length==0) { %>
+            <p style="text-align: center; margin-top: 20px; font-style: italic; font-size: 25px">No Order is placed Yet</p>
+          <% } %>
+        <% for( let i = 0; i < order.length; i++ ) { %>
+            <% for( let j = 0; j < product.length; j++ ) { %>
+                <% if (order[i].product_id==product[j].product_id){ %>
+                    <div class="d-flex align-items-center items" id="<%= order[i].order_id %>">
+                      <div class="d-flex flex-column" style="width: 40%;">
+                            <h4><%= product[j].name%></h4>
+                            <h5>Price: <%= product[j].price%></h5>
+                      </div>
+                      <div style="display: flex; justify-content: space-around; width: 30%;">
+                        <span>
+                           Ordered By :<%= order[i].user_id %>
+                        </span>  
+                      </div>
+                      <div style="display: flex; justify-content: space-around; width: 40%;" id="myPopup">
+                          <div class="popup" >Details
+                              <span class="popuptext" ><%= product[j].description%></span>
+                            </div>
+                            <div>
+                              Quantity
+                              <span><%= order[i].quantity%></span>
+                            </div>
+                          <a class="btn btn-secondary deleteOrder" id="<%= product[j].product_id %>">Cancel Order</a>
+                      </div>
+                  </div>
+                <% } %>
+            <% } %>
+           
+        <%}%>
+            
+      </div>
+      
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/js/order.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

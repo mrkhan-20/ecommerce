@@ -20,13 +20,14 @@ const post=(req,res)=>{
         "description": req.body.description,
         "price":req.body.price,
         "file":req.file.filename,
-        "seller":req.body.seller
+        "seller":req.body.seller,
+        "quantity":req.body.quantity
     }
     if(req.file.size>250000){
         res.render("seller",{user:req.session.user,error:"Image should be less than 250kb"});
         return;
     }
-
+    console.log(pr)
     let p=[];
     seller(null,req.session.user.username,(err,data)=>{
         if(err){

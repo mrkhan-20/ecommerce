@@ -10,7 +10,8 @@ module.exports=(req,res)=>{
             if(data.length>0){
                 let p={"quantity":quantity};
                 updateCart(p,1,username,id);
-        }
+            }
+            res.send();
     });
     }
     else{

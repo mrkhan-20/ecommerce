@@ -4,4 +4,6 @@ const home=require("../controllers/home");
 const router=express.Router();
 
 router.get("/",checkAuth,home);
+
+
 module.exports=router;

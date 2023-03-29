@@ -2,7 +2,6 @@ const Carts=require("./sqlConnection");
 
 async function updateCart(cart,flag,username,id){
     try{
-        // console.log("update")
         if(flag){
             await Carts.getClient().query(`update cart set quantity='${cart.quantity}' where username='${username}' and product_id='${id}'`);
         }

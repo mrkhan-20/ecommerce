@@ -34,13 +34,18 @@
       <div class="p-item" id="p-item">
         <div class="d-flex justify-content-between">
           <h3>Product List</h3>
-          <a href="/mycart" class="btn btn-primary" id="mycart">My Cart</a>
+          <div>
+            <a href="/mycart" class="btn btn-primary" id="mycart">My Cart</a>
+            <a href="/myorder" class="btn" style="background-color: rgb(201, 34, 131); color: aliceblue;" >My Orders</a>
+          </div>
         </div>
         <%- include("./partials/product",{product:product,cartitems:cartitems}) %>
       </div>
-      <div id="n" class="d-flex justify-content-center align-items-center" width="100%" style="background-color: black;">
-       <a href="/next" style="color:rgb(226, 91, 91); " id="next">
-         Load more products>>
+      <div id="n" class="d-flex justify-content-center align-items-center" width="100%">
+       <a href="/next"  id="next">
+        <button class="btn " style="background-color:rgb(4, 156, 143); color: aliceblue;">
+          Next Page
+        </button> 
        </a> 
       </div>
 

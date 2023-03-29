@@ -17,6 +17,7 @@ body{
     width: 100%;
 }
 .log1{
+    margin-top: 5px;
     display: flex;
     justify-content: space-around;
     align-items: end;
@@ -31,4 +32,8 @@ body{
 }
 a{
     text-decoration: none;
+}
+p{
+    font-weight: 600;
+    font-size: 20px;
 }

@@ -1,6 +1,9 @@
 
 body{
      font-family: 'Open Sans', sans-serif;
+     background-image: url('../2593042.jpg');
+     /* background-repeat: no-repeat; */
+      background-size:cover;
 }
 .head{
     padding: 10px;
@@ -8,7 +11,7 @@ body{
     justify-content: space-between;
     align-items: center;
     color:aliceblue;
-    background-color:rgb(39, 94, 212);
+    background-color:rgb(83, 77, 77);
     margin-bottom: 10px;
 }
 
@@ -48,7 +51,11 @@ img{
     background-color: rgb(43, 37, 37);
     color: white;
     padding: 15px 10px 15px 10px;
+    transition: transform .8s; 
     border-radius: 10px;
+}
+.items:hover{
+  transform: scale(1.05);
 }
 a{
     color: white;
@@ -60,11 +67,10 @@ a:hover{
 .description{
     padding: 10px 15px 10px 15px;
 }
-
-
-
-
-
+img:hover{
+  transition: .7s;
+  transform: scale(1.1);
+}
 .popup {
     position: relative;
     display: inline-block;

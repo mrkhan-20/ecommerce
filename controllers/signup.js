@@ -11,8 +11,12 @@ const getsign=(req,res)=>{
 }
 
 const postsign=(req,res)=>{
-    let {name,username,email,password}=req.body;
+    let {name,username,email,password,user}=req.body;
     let d=[];
+    if(name==null || username==null || email==null || password==null || user==null){
+        res.render("signup",{error:"Some fields are empty"});
+        return;
+    }
     SetandGetData(null,(err, data)=>{
         if(err){
             res.render("signup",{error:"something went wrong"});
@@ -27,11 +31,18 @@ const postsign=(req,res)=>{
                 return;
             }
         }
-        let temp={name,username,email,password,
+        if(user=="seller"){
+            user=true;
+        }
+        else{
+            user=false;
+        }
+        let temp={name,username,email,password,user,
         "isVarified":false,
         "token":Date.now()
         };
         
+        console.log(temp);
         SetandGetData(temp,(err, data)=>{
             if(err) {
                 res.render("signup",{error:"something went wrong"});

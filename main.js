@@ -2,8 +2,8 @@ const express=require("express");
 const session = require("express-session");
 const Products=require("./services/servicesSql/Getproduct");
 const updateProduct=require("./services/servicesSql/updateProduct");
+const checkStock=require("./services/servicesSql/checkStock");
 const deleteProduct=require("./services/servicesSql/deleteProduct");
-const Cart=require("./services/servicesMongo/getCart");
 const forgotPass=require("./services/servicesSql/forgotPass");
 const tokenVerify=require("./services/servicesSql/tokenVerify");
 const getSeller=require("./services/servicesSql/getSeller");
@@ -16,7 +16,9 @@ const home=require("./routes/homeRoute");
 const admin=require("./routes/adminRoute");
 const seller=require("./routes/seller");
 const adminproduct=require("./routes/adminproductRoute");
+const checkout=require("./routes/checkoutRoute");
 const nextProduct=require("./routes/nextProductRoute");
+const ordersRoute=require("./routes/ordersRoute");
 const prevProducts=require("./routes/prevProductRoute");
 const newproduct=require("./routes/newproductRoute");
 const sellerNewProduct=require("./routes/sellerNewProduct");
@@ -95,13 +97,18 @@ app.use("/nextProduct",nextProduct);
 
 app.use("/prevProducts",prevProducts);
 
+app.use("/checkout",checkout);
+app.use("/myorder",ordersRoute);
 
-app.post("/checkout",(req,res)=>{
-    let data=req.body.id;
-    data.forEach(element => {
-
-        getSeller()
-    });
+app.post("/checkStock",(req,res)=>{
+    checkStock(req.body.id,req.body.quantity,(err,data)=>{
+        if(data=="good"){
+            res.status(200).send();
+        }
+        else{
+            res.status(300).send(data);
+        }
+    })
 })
 
 app.use("/newproduct",newproduct);
@@ -145,7 +152,7 @@ app.use("/forgot",forgot);
 
 app.use("/mycart",mycart);
 
-app.use("/addtocart",addtocart)
+app.use("/addtocart",addtocart);
 
 app.use("/plus",plus);
 app.use("/minus",minus)

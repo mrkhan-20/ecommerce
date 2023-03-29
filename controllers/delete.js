@@ -1,7 +1,6 @@
 const Carts=require("../services/servicesSql/sqlConnection");
 
 module.exports=async (req,res)=>{
-    let id=req.body.id;
     if(req.session.user){
         let id=req.body.id;
         let username=req.session.user.username;

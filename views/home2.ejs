@@ -19,7 +19,10 @@
       <div class="p-item" id="p-item">
         <div class="d-flex justify-content-between">
           <h3>Product List</h3>
-          <a href="/mycart" class="btn btn-primary" id="mycart">My Cart</a>
+          <div>
+            <a href="/mycart" class="btn btn-primary" id="mycart">My Cart</a>
+            <a href="/myorder" class="btn btn" style="background-color: rgb(201, 34, 131); color: aliceblue;">My Orders</a>
+          </div>
         </div>
         
           <% for( let i = 0; i < newpro.length;i++ ) { %>
@@ -61,11 +64,12 @@
           
         
       </div>
-      <div id="n" class="d-flex justify-content-around align-items-center" width="100%" style="background-color: black;">
-        <a href="/next" style="color:rgb(226, 91, 91); " >
-          << Previous products
-        </a> 
-       
+      <div id="n" class="d-flex justify-content-around align-items-center" width="100%">
+        <a href="/next"  id="next">
+          <button class="btn " style="background-color:rgb(4, 156, 143); color: aliceblue;">
+            Prev Page
+          </button> 
+         </a> 
        </div>
 
     

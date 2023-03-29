@@ -19,15 +19,20 @@
                 </div>
                 <div>
                     <form method ="post" action="/signup" class="form">
-                        <input type="text" name="name" placeholder="Name">
-                        <input type="text" name="username" placeholder="Username">
-                        <input type="email" name="email" placeholder="Email">
-                        <input type="password" name="password" placeholder="Password" id="pass">
+                      <div style="display: flex;">
+                        <input type="radio" name="user" id="" value="user" required>User
+                        <input type="radio" name="user" value="seller">Seller
+                      </div>
+                        <input type="text" name="name" placeholder="Name" required>
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="password" placeholder="Password" id="pass" required>
                         <div style="display: flex; width: 100%; justify-content: center;">
                           <input type="checkbox" id="check" class="check" name="show" style=" width: 4%; margin:0px 2px 0px 0px"><label for="show">Show Password</label>
 
                         </div>
                         <input type="submit" value="Signup" class="btn btn-success">
+                        <a href="/login" style="color: black; font-weight: 500; margin-bottom: 5px;">Already a user?</a>
                     </form>
 
                     <% if (error) { %>

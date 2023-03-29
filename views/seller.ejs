@@ -18,11 +18,12 @@
       <div class="new">
         <h5>Add new product</h5>
         <form action="/sellerNewProduct " method="post" class="form" enctype="multipart/form-data">
-          <input type="text" name="name" placeholder="Name" >
-          <input type="text" name="description"  placeholder="Description">
-          <input type="text" name="price"  placeholder="Price">
+          <input type="text" name="name" placeholder="Name" required>
+          <input type="text" name="description"  placeholder="Description" required>
+          <input type="text" name="price"  placeholder="Price" required>
+          <input type="text" name="quantity"  placeholder="Quantity" required>
           <input type="text" name="seller"  placeholder="Seller" style="display: none;"value=<%= user.username %>>
-          <input type="file" name="product-pic" >
+          <input type="file" name="product-pic" required>
           <input type="submit" value="Submit" class="btn btn-primary">
         </form>
         <% if (error) { %>
@@ -36,7 +37,7 @@
       <div class="p-item" id="p-item">
         <div class="d-flex justify-content-between align-items-center">
           <h3>Product List</h3>
-          <a href="" class="btn btn-primary">Orders List</a>
+          <a href="/seller/ordersList" class="btn btn-primary">Orders List</a>
         </div>
         
         <div id="list">
@@ -55,7 +56,8 @@
           </div>
            <div style="display: flex; justify-content: space-around; width: 40%;" id="myPopup">
             <div class="d-flex align-items-center">
-              <input type="text" id="desc">
+                <input type="text" id="desc">
+                <input type="text" id="quantity">
               <input type="text" id="seller" style="display: none;" >
             </div>
                 <a class="btn btn-secondary delete" id="">Delete</a>
