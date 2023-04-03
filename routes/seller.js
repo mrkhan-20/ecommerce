@@ -8,6 +8,9 @@ const router=express.Router();
 
 router.get("/",(req,res)=>{
     if(req.session.islog && req.session.user.varified){
+        if(!req.session.user.isseller){
+            res.redirect("/home")
+        }
         seller(null,req.session.user.username,(err,data)=>{
             res.render("seller",{user:req.session.user,error:""});
         })

@@ -1,7 +1,7 @@
 const Users=require("./sqlConnection");
 
 Users.connectDb();
-
+ 
 async function SetandGetData(users,callback){
     try{
         if(users){

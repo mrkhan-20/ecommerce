@@ -1,0 +1,4 @@
+product_id,name,description,price,seller,isavailable,quantity
+47387ddaa50d67d49f93826ec826b118,hgfhg,hgcg,hgc,mak,TRUE,5
+dfe726db4e9e1e12db458b13d01ac42f,a,a,a,amit,TRUE,5
+d3d953dda77840458fdaf391c82a68a3,dummy,dummy,$100,mak,TRUE,10

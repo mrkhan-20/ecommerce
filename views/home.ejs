@@ -12,7 +12,7 @@
   </head>
   <body>
       <nav >
-        <%- include("./partials/header",{user:user}) %>
+        <%- include("./partials/header",{user:user}) %> 
       </nav>
 <!-- 
       <div class="new">
@@ -41,7 +41,9 @@
         </div>
         <%- include("./partials/product",{product:product,cartitems:cartitems}) %>
       </div>
-      <div id="n" class="d-flex justify-content-center align-items-center" width="100%">
+      <div id="n" class="d-flex justify-content-center align-items-center" width="100%" style="
+      margin-bottom: 30px;
+  ">
        <a href="/next"  id="next">
         <button class="btn " style="background-color:rgb(4, 156, 143); color: aliceblue;">
           Next Page
@@ -49,7 +51,7 @@
        </a> 
       </div>
 
-    
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="/js/home.js"></script>

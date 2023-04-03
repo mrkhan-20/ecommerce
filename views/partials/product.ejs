@@ -20,16 +20,16 @@
                     <% } %>
                 <% } %>
                 <% if (flag){ %>
-                    <button class="btn btn-success cart" id="<%= product[i].product_id %>c" style="display: none;">Add to cart</button>
+                    <button class="cart" id="<%= product[i].product_id %>c" style="display: none;">Add to cart</button>
                     <button class="btn btn-secondary removecart" id="<%= product[i].product_id %>rc" >Remove from cart</button>    
                 
             <% } else { %>
-                    <button class="btn btn-success cart" id="<%= product[i].product_id %>c" >Add to cart</button>
+                    <button class="cart" id="<%= product[i].product_id %>c" >Add to cart</button>
                     <button class="btn btn-secondary removecart" id="<%= product[i].product_id %>rc" style="display: none;" >Remove from cart</button>
              <% } %>
 
              <% }else { %>
-                <button class="btn btn-success cart" id="<%= product[i].product_id %>c" >Add to cart</button>
+                <button class="cart" id="<%= product[i].product_id %>c" >Add to cart</button>
                 <button class="btn btn-secondary removecart" id="<%= product[i].product_id %>rc" style="display: none;" >Remove from cart</button>
          <% } %>
         </div>

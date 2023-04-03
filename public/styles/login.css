@@ -1,6 +1,7 @@
 body{
     height: 100vh;
-    background-color: rgb(45, 31, 243);
+    background-image: url('../2593042.jpg');
+      background-size:cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,6 +26,7 @@ input{
     margin:15px 10px 10px  10px;
     border-radius: 5px;
     border: none;
+    font-size: 1rem;
     width: 70%;
 }
 .check:hover{
@@ -48,4 +50,63 @@ input:focus{
 }
 .btn:hover{
     box-shadow: 1px 1px 2px 3px rgb(35, 82, 236);
+}
+p{
+    font-weight: 600;
+    font-size: 25px;
+}
+.login{
+    width: 5rem;
+    display: inline-block;
+    color: aliceblue;
+    background-color: #007bff;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+@media screen and (max-width: 750px) {
+    p{
+         font-size: 15px;
+    }
+    label{
+        font-size: 12px;
+    }
+    .login{
+        width: 3rem;
+        padding: 0.3rem 0.55rem;
+        font-size: .7rem;
+    }
+    input{
+        font-size: .7rem;
+    }
+    a{
+        font-size: .8rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    p{
+         font-size: 10px;
+    }
+    label{
+        font-size: 8px;
+    }
+    .login{
+        width: 2.5rem;
+        padding: 0.25rem 0.45rem;
+        font-size: .5rem;
+    }
+    a{
+        font-size: .6rem;
+    }
 }

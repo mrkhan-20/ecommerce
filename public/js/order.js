@@ -9,15 +9,9 @@ popup.addEventListener("mouseover", function(e){
 
 })
 
-let bill=document.getElementById("bill");
 let items=document.querySelectorAll(".items");
-let id,quantity=1,sum=0;
+let id,quantity=1;
 items.forEach(element=>{
-    let price=element.firstElementChild.lastElementChild.lastElementChild.innerHTML;
-    price=price.split("$")[1];
-    let q=element.firstElementChild.firstElementChild.src.split("http://localhost:3000/")[1];
-    let quan=document.getElementById(q+"quan").innerText;
-    sum+=parseInt(price)*parseInt(quan);
     element.addEventListener("click",(e)=>{
         let target=e.target;
         eid=target.parentNode.parentNode.id;
@@ -38,7 +32,7 @@ items.forEach(element=>{
         }
     })
 })
-bill.innerText="Total Bill: $"+sum;
+
 
 function sendReq(url,uid){
     let req = new XMLHttpRequest();
@@ -50,4 +44,3 @@ function sendReq(url,uid){
         
     })
 }
-

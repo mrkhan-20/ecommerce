@@ -4,10 +4,11 @@ const Products=require("../services/servicesSql/Getproduct");
 
 
 const router=express.Router();
+let ar=[];
 
 router.get("/",(req,res) => {
     if(req.session.user){
-        getAndSetOrder(null, req.session.user.username,(err, data) => {
+        getAndSetOrder(null, req.session.user.username,ar,(err, data) => {
             let order=[];
             Products(null,(err,d)=>{
                 data.forEach(element => {

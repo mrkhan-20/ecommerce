@@ -91,7 +91,6 @@ let sum=0,flag=false,uid=[],itemtodelete=[];
 checkout.addEventListener("click",()=>{
     items.forEach(e=>{
         let q=e.lastElementChild.childNodes[3].firstElementChild.innerText;
-        if(e.lastElementChild.lastElementChild.checked){
             let req = new XMLHttpRequest();
             req.open("POST","checkStock");
             req.setRequestHeader("Content-Type", "application/json");
@@ -109,45 +108,49 @@ checkout.addEventListener("click",()=>{
                 } 
                 else{
                     let stock=e.lastElementChild.childNodes[7];
-                    console.log(stock)
                     stock.innerText ="Stock left:"+req.responseText;
                     stock.setAttribute("style","color:red");
                 }
             })
-        }
     })
     setTimeout(()=>{
         if(flag==1){
-            console.log(sum)
             let req = new XMLHttpRequest();
-            req.open("POST","checkout");
+            req.open("POST","checkout/checkoutPayment");
             req.setRequestHeader("Content-Type", "application/json");
-            req.send(JSON.stringify({uid,sum}))
+            req.send(JSON.stringify({sum}))
             req.addEventListener("load",()=>{
-                console.log(req.responseText);
                 var options = {
                     "key": "rzp_test_EBK6wY0vXIAoeX",
-                    "amount": sum,
-                    "currency": "USD",
-                    "name": "My Ecommerce",
-                    "description": "Test Transaction",
+                    "amount": sum*100,
+                    "currency": "INR",
+                    // "name": "My Ecommerce",
+                    // "description": "Test Transaction",
                     "order_id": req.responseText.id, 
                     "handler": function (response){
-                        alert("Payment Successful");
-                        itemtodelete.forEach(e=>{
-                            e.remove();
-                            sendReq("removecart",e.id);
+                        let payment=response.razorpay_payment_id;
+                        let req = new XMLHttpRequest();
+                        req.open("POST","checkout");
+                        req.setRequestHeader("Content-Type", "application/json");
+                        req.send(JSON.stringify({uid,sum}))
+                        req.addEventListener("load",()=>{
+                            sendReq("checkout/payment",{payment})
+                            itemtodelete.forEach(e=>{
+                                e.remove();
+                                sendReq("removecart",e.id);
+                            })
                         })
                     },
-                    "theme": {
-                        "color": "#3399cc"
-                    }
+                    // "theme": {
+                    //     "color": "#3399cc"
+                    // }
                 };
                 var rzp1 = new Razorpay(options);
                 rzp1.on('payment.failed', function (response){
-                        alert(response.error.description);
-                        alert(response.error.source);
-                        alert(response.error.reason);
+                    sendReq("checkout/delete",{payment})
+                    alert(response.error.description);
+                    alert(response.error.source);
+                    alert(response.error.reason);
                 });
                 rzp1.open();
                 

@@ -12,10 +12,10 @@
   <body>
       <div class="container">
         <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4 " style="   background-color: rgb(255, 255, 255); border-radius:10px;">
+            <div class="col-2 col-sm-3 col-lg-4"></div>
+            <div class="col-8 col-sm-6 col-lg-4" style=" background-color: rgb(255, 255, 255); border-radius:10px;">
                 <div class="mt-4 d-flex justify-content-center align-items-center">
-                    <h5>Welcome to Login page </h5>
+                  <p>Welcome to Login page </p>
                 </div>
                 <div>
                     <form method="post" action="/login" class="form">
@@ -25,7 +25,7 @@
                           <input type="checkbox" id="check" class="check" name="show" style=" width: 4%; margin:0px 2px 0px 0px"><label for="show">Show Password</label>
 
                         </div>
-                        <input type="submit" value="Login" class="btn btn-primary">
+                        <input type="submit" value="Login" class="login">
                     </form>
                     <% if (error) { %>
                       <div class="d-flex justify-content-center">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4"></div>
+            <div class="col-2 col-sm-3 col-lg-4"></div>
         </div>
 
       </div>

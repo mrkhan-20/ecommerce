@@ -12,16 +12,16 @@
   <body>
       <div class="container">
         <div class="row">
-            <div class="col-4"></div>
-            <div class="col-4 " style="   background-color: rgb(255, 255, 255); border-radius:10px;">
+            <div class="col-2 col-sm-3 col-lg-4"></div>
+            <div class="col-8 col-sm-6 col-lg-4" style="   background-color: rgb(255, 255, 255); border-radius:10px;">
                 <div class="mt-2 d-flex justify-content-center align-items-center">
-                    <h5>Welcome to Signup page </h5>
+                  <p>Welcome to Signup page </p>
                 </div>
                 <div>
                     <form method ="post" action="/signup" class="form">
                       <div style="display: flex;">
-                        <input type="radio" name="user" id="" value="user" required>User
-                        <input type="radio" name="user" value="seller">Seller
+                        <input type="radio" class="user"name="user" id="" value="user" required>User
+                        <input type="radio" class="user" name="user" value="seller">Seller
                       </div>
                         <input type="text" name="name" placeholder="Name" required>
                         <input type="text" name="username" placeholder="Username" required>
@@ -31,7 +31,7 @@
                           <input type="checkbox" id="check" class="check" name="show" style=" width: 4%; margin:0px 2px 0px 0px"><label for="show">Show Password</label>
 
                         </div>
-                        <input type="submit" value="Signup" class="btn btn-success">
+                        <input type="submit" value="Signup" class="signup">
                         <a href="/login" style="color: black; font-weight: 500; margin-bottom: 5px;">Already a user?</a>
                     </form>
 
@@ -42,7 +42,7 @@
                     <% } %>
                 </div>
             </div>
-            <div class="col-4"></div>
+            <div class="col-2 col-sm-3 col-lg-4"></div>
         </div>
 
       </div>

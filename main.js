@@ -1,6 +1,10 @@
 const express=require("express");
 const session = require("express-session");
+const multer=require("multer");
+const fs=require("fs");
+const csv = require('csv-parser')
 const Products=require("./services/servicesSql/Getproduct");
+const sellerProducts=require("./services/servicesSql/getSeller");
 const updateProduct=require("./services/servicesSql/updateProduct");
 const checkStock=require("./services/servicesSql/checkStock");
 const deleteProduct=require("./services/servicesSql/deleteProduct");
@@ -40,6 +44,7 @@ const app=express();
 app.use(express.static("public"));
 app.set('view engine','ejs');
 app.use(express.static("uploads"));
+const upload = multer({ dest: "uploads/" }); 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(session({
@@ -85,6 +90,8 @@ app.get("/verifyMail/:token", function(req, res){
 
 })
 app.use("/seller",seller);
+
+
 app.get("/sellerProducts",(req,res)=>{
     getSeller(null,req.session.user.username,(err,data)=>{
         res.json(data);
@@ -165,6 +172,39 @@ app.post("/deleteProduct",(req,res)=>{
 app.use("/delete",del);
 
 app.use("/removecart",removecart);
+
+
+app.post("/csv",upload.single("csvFile"),(req,res)=>{
+    let file=req.file.filename;
+    uploadCSV(__dirname+"/uploads/"+file);
+    res.redirect("/seller")
+});
+
+function uploadCSV(url){
+    let results=[];
+    fs.createReadStream(url)
+    .pipe(csv())
+    .on('data', (data) => results.push(data))
+    .on('end', () => {
+    results.forEach((e=>{
+        let items={
+            file: e.product_id,
+            name:e.name,
+            description: e.description,
+            price:e.price,
+            seller: e.seller,
+            quantity: e.quantity
+        }
+        sellerProducts(items,e.seller,(err,data)=>{
+            if(err) console.log(err);
+        })
+    }))
+    
+  });
+}
+
+
+
 
 app.use("/next",next);
 app.use("/next2",next2);

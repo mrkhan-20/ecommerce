@@ -1,0 +1,14 @@
+"product_id","name","description","price","seller","isavailable","quantity"
+"22804de66f98c71252befb0a5d68a9e7","Ipad premium","This is first products","$520","amit",True,0
+"47387ddaa50d67d49f93826ec826b118","hgfhg","hgcg","hgc","mak",False,5
+"dfe726db4e9e1e12db458b13d01ac42f","a","a","a","amit",False,5
+"d3d953dda77840458fdaf391c82a68a3","dummy","dummy","$100","mak",False,10
+"a4088ffca4401a3d881905c373b19f86","Rolls Royce","This is third product","$300","mak",True,17
+"b34042ebaa049379139376d39ebbad86","Lamborghini Aventador","this is fourth product","$400","farhan",True,3
+"8fed15d33568a1c9eafa56454fdc24ab","Kawasaki Ninja zr","This is seconds product","$685","mak",True,2
+"c01e853b2910934943bd621f09a707a7","Iphone 14 pro max","this is fifth product","$150","mak",True,8
+"f40b47fceafa90b59c9a4d49f7adb636","Toyota Fortuner","This is ninth product","$200","amit",True,11
+"d6c290f60a9376b6d58a6576a4b77312","Levnovo IdeaPad","This is seventh product","$80","farhan",True,5
+"d934657d82f8af8294eafa7591bd7b10","America","This is eighth product","$785","farhan",True,5
+"fb69fffd0da80cc2b48149f26763ffb2","Harley Davidson","This is tenth product","$920","mak",True,20
+"d224b3b7f305698303851eb932a92c7c","China","This is sixth product","$655","amit",True,5

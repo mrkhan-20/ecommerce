@@ -29,24 +29,28 @@ const post=(req,res)=>{
     }
     console.log(pr)
     let p=[];
-    seller(null,req.session.user.username,(err,data)=>{
-        if(err){
-            res.render("seller",{user:req.session.user,error:"something went wrong"});
-            return;
-        }
-        if(data.length>0 ){
-            p=data;
-        }
-        seller(pr,req.session.user.username,(err,data)=>{
-            if(err) {
+    if(req.session.user){
+        seller(null,req.session.user.username,(err,data)=>{
+            if(err){
                 res.render("seller",{user:req.session.user,error:"something went wrong"});
                 return;
             }
-
-           
+            if(data.length>0 ){
+                p=data;
+            }
+            seller(pr,req.session.user.username,(err,data)=>{
+                if(err) {
+                    res.render("seller",{user:req.session.user,error:"something went wrong"});
+                    return;
+                }
+    
+               
+            })
+            res.render("seller",{user:req.session.user,error:""});
         })
-        res.render("seller",{user:req.session.user,error:""});
-    })
+        return;
+    }
+    res.redirect("/seller")
 }
 
 module.exports={get:get,post:post};
